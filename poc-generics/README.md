@@ -2,6 +2,8 @@
 
 Generics help create reusable modules that are flexible to work with multiple types
 
+## Generic Functions
+
 To create a function that receives a generic argument, we could make use of `any` type, like:
 
 ```Typescript
@@ -30,3 +32,19 @@ Now we can, for example, call the function setting Type to the type we want, by 
 Or, we can just let TS infer the type:
 
 ![output with inferred type](./assets/output-with-inferred-type.png)
+
+When we set Generic Type variables, TS will enforce us to work with them as real generics, aka as they could be ANY type, so if you try to access something specific from a particular type, the compiler will give an error:
+
+![function with type length](./assets/func-with-type-length.png)
+
+If we want to get the length of the param, we'll need to tell TS that we're receiving an array of Type. There are two ways of doing it:
+
+```Typescript
+function funcGetTypeArrayLength1<Type>(arg: Type[]): number {
+  return arg.length
+}
+
+function funcGetTypeArrayLength2<Type>(arg: Array<Type>): number {
+  return arg.length
+}
+```
