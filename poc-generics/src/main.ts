@@ -23,3 +23,39 @@ function funcGetTypeArrayLength1<Type>(arg: Type[]): number {
 function funcGetTypeArrayLength2<Type>(arg: Array<Type>): number {
   return arg.length;
 }
+
+// ----------------------------------------------
+
+function example<Type>(arg: Type): Type {
+  return arg;
+}
+
+let exampleUsage: <Input>(arg: Input) => Input = example;
+
+let exampleUsage2: { <Type>(arg: Type): Type } = example;
+
+// ----------------------------------------------
+
+interface GenericExampleFn {
+  <Type>(arg: Type): Type;
+}
+
+function example3<Type>(arg: Type): Type {
+  return arg;
+}
+
+let exampleUsage3: GenericExampleFn = example3;
+
+// -----------------------------------------------
+
+interface GenericExampleFn2<Type> {
+  (arg: Type): Type;
+}
+
+function example4<Type>(arg: Type): Type {
+  return arg;
+}
+
+let exampleUsage4: GenericExampleFn2<number> = example4;
+
+exampleUsage4(123);

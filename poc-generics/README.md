@@ -48,3 +48,39 @@ function funcGetTypeArrayLength2<Type>(arg: Array<Type>): number {
   return arg.length
 }
 ```
+
+## Typing Generic Functions
+
+We can also create types for the functions themselves. The Generic type doesn't need to have the same name, as long as they have the same structure like:
+
+```Typescript
+function example<Type>(arg: Type): Type {
+  return arg
+}
+
+let exampleUsage: <Input>(arg: Input) => Input = example
+```
+
+The generic type can also be written as an object:
+
+```Typescript
+let exampleUsage2: { <Type>(arg: Type): Type } = example;
+```
+
+Now we can move the object into a generic interface:
+
+```Typescript
+interface GenericExampleFn {
+  <Type>(arg: Type): Type;
+}
+
+function example3<Type>(arg: Type): Type {
+  return arg
+}
+
+let exampleUsage3: GenericExampleFn = example3
+```
+
+We can also move the generic parameter to be a parameter of the Interface. It helps to see which type it is generic over:
+
+![generic interface with param](./assets/generic-func-with-param.png)
