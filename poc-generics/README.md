@@ -84,3 +84,24 @@ let exampleUsage3: GenericExampleFn = example3
 We can also move the generic parameter to be a parameter of the Interface. It helps to see which type it is generic over:
 
 ![generic interface with param](./assets/generic-func-with-param.png)
+
+## Generic Classes
+
+Generic classes can also have generic types as parameters, similar to Generic Functions
+
+```Typescript
+class GenericUtils<Type> {
+  empty!: Type;
+  sum!: (x: Type, y: Type) => Type;
+}
+
+let genericString = new GenericUtils<string>();
+genericString.sum = function (x, y) {
+  return x + y;
+};
+
+let genericNumber = new GenericUtils<number>();
+genericNumber.sum = function (x, y) {
+  return x + y;
+};
+```

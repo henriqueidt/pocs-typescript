@@ -59,3 +59,20 @@ function example4<Type>(arg: Type): Type {
 let exampleUsage4: GenericExampleFn2<number> = example4;
 
 exampleUsage4(123);
+
+// -----------------------------------------------
+
+class GenericUtils<Type> {
+  empty!: Type;
+  sum!: (x: Type, y: Type) => Type;
+}
+
+let genericString = new GenericUtils<string>();
+genericString.sum = function (x, y) {
+  return x + y;
+};
+
+let genericNumber = new GenericUtils<number>();
+genericNumber.sum = function (x, y) {
+  return x + y;
+};
