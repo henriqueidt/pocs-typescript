@@ -105,3 +105,22 @@ genericNumber.sum = function (x, y) {
   return x + y;
 };
 ```
+
+## Generic Types With Knwon Properties
+
+Sometimes there can be generic types for which we know some of their fields, or part of it
+
+```Typescript
+interface WithId {
+  id: string;
+}
+
+function logId<Type extends WithId>(arg: Type): Type {
+  console.log(arg.id)
+  return arg;
+}
+
+logId({ id: "123", otherField: 456 });
+```
+
+Notice that as long as the parameter passed has an id, it is valid

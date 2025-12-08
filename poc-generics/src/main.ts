@@ -76,3 +76,15 @@ let genericNumber = new GenericUtils<number>();
 genericNumber.sum = function (x, y) {
   return x + y;
 };
+
+// ------------------------------------
+interface WithId {
+  id: string;
+}
+
+function logId<Type extends WithId>(arg: Type): Type {
+  console.log(arg.id);
+  return arg;
+}
+
+logId({ id: "123", otherField: 456 });
