@@ -124,3 +124,19 @@ logId({ id: "123", otherField: 456 });
 ```
 
 Notice that as long as the parameter passed has an id, it is valid
+
+## Using Constrains Based on other Generic Types
+
+We can use constrains that are based on the Generic Types, for exemple, fi we want to extract a property from a Type
+
+```Typescript
+function getProp<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key]
+}
+
+let obj = { a: 1, b: 2, c: 3};
+```
+
+TS will only allow us to call `getProp` by passing a key that actually exists in the object passed:
+
+![generic types with constrains](./assets/generic-types-2.png)

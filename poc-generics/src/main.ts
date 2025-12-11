@@ -88,3 +88,13 @@ function logId<Type extends WithId>(arg: Type): Type {
 }
 
 logId({ id: "123", otherField: 456 });
+
+// --------------------------------------
+
+function getProp<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key];
+}
+
+let obj = { a: 1, b: 2, c: 3 };
+
+getProp(obj, "a");
