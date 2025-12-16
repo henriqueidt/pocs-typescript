@@ -98,3 +98,13 @@ function getProp<Type, Key extends keyof Type>(obj: Type, key: Key) {
 let obj = { a: 1, b: 2, c: 3 };
 
 getProp(obj, "a");
+
+// ---------------------------------------
+
+function getResultInArray<Type = String>(param?: Type): Type[] {
+  return Array(5).fill(param || "N/A");
+}
+
+let result = getResultInArray(2);
+
+let result2 = getResultInArray();

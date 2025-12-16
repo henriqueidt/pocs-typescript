@@ -140,3 +140,9 @@ let obj = { a: 1, b: 2, c: 3};
 TS will only allow us to call `getProp` by passing a key that actually exists in the object passed:
 
 ![generic types with constrains](./assets/generic-types-2.png)
+
+## Default Generic Parameter
+
+We can also define default generic parameters on functions, so when the function is called without passing parameters, it assumes the generic types, making them more generic
+
+![default types](./assets/deafult-types.png)
