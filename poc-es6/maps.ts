@@ -7,6 +7,7 @@
  * opposing to objects which can have only strings as keys
  * - It's similar to dictionary in other languages
  * - Maps remember the insertion order
+ * - Have a size property
  *  */
 
 // Simple map creation
