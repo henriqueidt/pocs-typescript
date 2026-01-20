@@ -13,3 +13,18 @@ Promise.allSettled([promise1, promise2]).then((results) => {
   // Only executes after all promises are resolved/rejected
   results.forEach((result) => console.log(result.status));
 });
+
+// Promise.allSettled() vs Promise.all()
+// - Promise.all() - fails fast if any promise is rejected
+// - Promise.allSettled() - waits for all promises to complete, independent of the outcome
+
+Promise.all([promise1, promise2])
+  .then((results) => {
+    console.log("Promise.all results:", results);
+  })
+  .catch((error) => {
+    console.log(
+      "Promise.all error will be executed immediately when promise2 fails:",
+      error
+    );
+  });
