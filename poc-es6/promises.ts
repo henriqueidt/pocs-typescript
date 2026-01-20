@@ -28,3 +28,38 @@ Promise.all([promise1, promise2])
       error
     );
   });
+
+// Promise.withResolvers()
+// - Creates a promise along with its resolve and reject functions
+// - Useful when it's needed to resolve/reject a promise from outside its execution
+
+// Equivalent of implementing:
+let res, rej;
+const promise3 = new Promise((resolve, reject) => {
+  res = resolve;
+  rej = reject;
+});
+
+// Waiting for user action:
+const documentMock2 = {
+  getElementById: (id: string) => ({
+    addEventListener: (event: string, cb: () => void) => {
+      // Simulate user click after 1 second
+      setTimeout(cb, 1000);
+    },
+  }),
+};
+
+const waitUserClick = () => {
+  const { promise, resolve } = Promise.withResolvers<string>();
+
+  documentMock2.getElementById("myButton").addEventListener("click", () => {
+    resolve("button clicked");
+  });
+
+  return promise;
+};
+
+waitUserClick().then((message) => {
+  console.log(message);
+});
