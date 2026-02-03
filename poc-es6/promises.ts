@@ -77,3 +77,29 @@ const promise6 = new Promise((resolve) => setTimeout(resolve, 500, "slow"));
 const promises = [promise4, promise5, promise6];
 
 Promise.any(promises).then(value => console.log(value)) // quick
+
+// Promise.race()
+// Receives a group of promises and returns a single promise.
+// Difference here is that it "ends" whenever any of the promises ends,
+// regardless if it resolves or rejects. It will return the result of that
+// first promise to finish.
+
+const promise7 = new Promise((resolve) => {
+  setTimeout(resolve, 500, "one");
+});
+
+const promise8 = new Promise((resolve) => {
+  setTimeout(resolve, 100, "two");
+});
+
+Promise.race([promise7, promise8]).then(value => console.log(value)) // two
+
+const promise9 = new Promise((resolve) => {
+  setTimeout(resolve, 500, "one");
+});
+
+const promise10 = new Promise((resolve, reject) => {
+  setTimeout(reject, 100, new Error("two"));
+});
+
+Promise.race([promise9, promise10]).then(value => console.log(value)) // two
