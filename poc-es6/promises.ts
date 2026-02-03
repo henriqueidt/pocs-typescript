@@ -63,3 +63,17 @@ const waitUserClick = () => {
 waitUserClick().then((message) => {
   console.log(message);
 });
+
+
+// Promise.any()
+// Receives a group of promises and returns a single promise.
+// Fullfills whenever one of the promises resolves with its result
+// Rejects when all promises fail
+
+const promise4 = Promise.reject(new Error("error"));
+const promise5 = new Promise((resolve) => setTimeout(resolve, 100, "quick"));
+const promise6 = new Promise((resolve) => setTimeout(resolve, 500, "slow"));
+
+const promises = [promise4, promise5, promise6];
+
+Promise.any(promises).then(value => console.log(value)) // quick
