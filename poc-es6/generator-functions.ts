@@ -56,3 +56,14 @@ generatorLog.next();
 generatorLog.next("blue"); // 1 blue
 generatorLog.next("yellow"); // 2 yellow
 generatorLog.next("green"); // 3 green
+
+// Adding a return statement in the generator
+
+function* withReturn() {
+  yield "green";
+  return "blue";
+}
+
+const generatorWithReturn = withReturn();
+console.log(generatorWithReturn.next()); // { value: "green", done: false }
+console.log(generatorWithReturn.next()); // { value: "blue", done: true }
